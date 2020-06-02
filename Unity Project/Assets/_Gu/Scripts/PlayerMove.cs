@@ -9,6 +9,10 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5.0f; //플레이어 이동속도
     public Vector2 margin;
 
+    public int lvl = 0;
+
+    public GameObject[] subPlayer;
+
     Transform tr;
 
     public Transform field;
@@ -17,6 +21,10 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //subPlayer.gameObject.SetActive(false);
+
+        //subPlayer = new GameObject[2];
+
         tr = GetComponent<Transform>();
         field = GetComponent<Transform>();
         margin = new Vector2(0.05f, 0.08f);
@@ -25,6 +33,36 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //서브플레이어 부르기
+        if (lvl == 1 || lvl == 2)
+        {
+            subPlayer[0].gameObject.SetActive(true);
+        }
+        else
+        {
+            subPlayer[0].gameObject.SetActive(false);
+        }
+
+        //서브플레이어 부르기
+        if (lvl == 2)
+        {
+            subPlayer[1].gameObject.SetActive(true);
+        }
+        else
+        {
+            subPlayer[1].gameObject.SetActive(false);
+        }
+
+        //레벨 업
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            lvl--;
+        }
+        //레벨 다운
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            lvl++;
+        }
 
         Move();
     }
@@ -65,6 +103,10 @@ public class PlayerMove : MonoBehaviour
         position.x = Mathf.Clamp(position.x, -2.5f, 2.5f);
         position.y = Mathf.Clamp(position.y, -2.5f, 2.5f);
         transform.position = position;
+
+        //서브플레이어 이동 -필요없어짐
+        //Vector3 subPosition = subPlayer.transform.position;
+        //subPlayer.transform.position = transform.position;
 
 
         ////이러한 방식을 캐스팅이라고 한다.
