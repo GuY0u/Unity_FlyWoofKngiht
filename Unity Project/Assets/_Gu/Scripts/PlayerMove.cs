@@ -101,7 +101,7 @@ public class PlayerMove : MonoBehaviour
         //다시 대입시키는 과정을 캐스팅이라고 한다.
         Vector3 position = transform.position;
         position.x = Mathf.Clamp(position.x, -2.5f, 2.5f);
-        position.y = Mathf.Clamp(position.y, -2.5f, 2.5f);
+        position.y = Mathf.Clamp(position.y, -3.5f, 3.5f);
         transform.position = position;
 
         //서브플레이어 이동 -필요없어짐
