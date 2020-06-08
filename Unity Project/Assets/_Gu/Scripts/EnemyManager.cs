@@ -43,8 +43,8 @@ public class EnemyManager : MonoBehaviour
             GameObject enemy = Instantiate(enemyFactory);
             //enemy.transform.position = spawnPoint.transform.position;
             int index = Random.Range(0, spawnPoint.Length);
-            enemy.transform.position = transform.GetChild(index).position;
-            //enemy.transform.position = spawnPoint[index].transform.position;
+            //enemy.transform.position = transform.GetChild(index).position;
+            enemy.transform.position = spawnPoint[index].transform.position;
 
         }
     }

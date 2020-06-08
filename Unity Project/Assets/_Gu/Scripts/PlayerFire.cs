@@ -55,7 +55,7 @@ public class PlayerFire : MonoBehaviour
     }
 
     //총알 발사
-    private void Fire()
+    public void Fire()
     {
         //마우스왼쪽 버튼 혹은 왼쪽컨트롤 키
         if (Input.GetButtonDown("Fire1"))
@@ -71,7 +71,7 @@ public class PlayerFire : MonoBehaviour
     }
 
     //레이져 발사
-    private void FireRay()
+    public void FireRay()
     {
 
         //마우스왼쪽 버튼 혹은 왼쪽컨트롤 키
@@ -117,5 +117,14 @@ public class PlayerFire : MonoBehaviour
             }
 
         }
+    }
+
+    public void OnFireButtonClick()
+    {
+
+        //총알 게임오브젝트 생성
+        GameObject bullet = Instantiate(bulletFactory);
+        //총알 오브젝트의 위치 지정
+        bullet.transform.position = firePoint.transform.position;
     }
 }

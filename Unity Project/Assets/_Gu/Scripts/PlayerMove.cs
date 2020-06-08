@@ -9,6 +9,9 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5.0f; //플레이어 이동속도
     public Vector2 margin;
 
+    //조이스틱 사용하기
+    public VariableJoystick joystick;   //조이스틱
+
     public int lvl = 0;
 
     public GameObject[] subPlayer;
@@ -69,8 +72,19 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
+
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
+
+        //조이스틱 사용하기
+        //키보드가 안눌렸을때 -> 조이스틱 사용하면 된다.
+        if (h == 0 && v == 0)
+        {
+            h = joystick.Horizontal;
+            v = joystick.Vertical;
+        }
+
 
         if (tr.position.x > -24)
         {
